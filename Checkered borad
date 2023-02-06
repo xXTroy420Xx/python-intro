@@ -1,0 +1,25 @@
+import pygame, sys  
+from pygame.locals import QUIT  
+
+pygame.init()  
+DISPLAYSURF = pygame.display.set_mode((1000,1000))  
+pygame.display.set_caption('South Park')  
+
+sq_surface = pygame.Surface((100,100))  
+
+while True:  
+    for event in pygame.event.get():  
+        if event.type == QUIT:  
+            pygame.quit()  
+            sys.exit()  
+
+    DISPLAYSURF.fill((20,50,20)) 
+    for l in range(0,10):  
+         for c in range(0,10): 
+            DISPLAYSURF.blit(sq_surface,(l*200+c*100,c*100))
+            DISPLAYSURF.blit(sq_surface,(c*200-l*100,l*100))
+
+
+    pygame.display.update() 
+
+     
