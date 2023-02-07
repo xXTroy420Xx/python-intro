@@ -1,0 +1,10 @@
+#Asked the user for input
+first_name = input("What is your first name: ")
+last_name = input("What is your last name: ")
+
+#Puts the user input into a variable that will capitalize it
+f1 = first_name.capitalize()
+l2 = last_name.capitalize()
+
+#Prints out a greeting that pulls your input from the variables 
+print("Hello,",f1,l2,"welcome to Computer Science 30")
