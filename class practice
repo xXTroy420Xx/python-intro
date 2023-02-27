@@ -1,0 +1,11 @@
+class Bad_Person:
+    def __init__(self, name, hp, dmg, speed):
+        self.name = name
+        self.hp = hp
+        self.dmg = dmg
+        self.speed = speed
+    def speek(self,sound):
+        return f'{self.name} says {sound}'
+    
+Bad1 = Bad_Person("guy", 150, 75, 15)
+bad1.speek("not cool sude!")
