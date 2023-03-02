@@ -10,14 +10,20 @@ class Enemy:
         
     def __str__(self):
         return f"{self.name} has {self.hp}"
-        
-    def speak(self,sound):
-        return (f"{self.name} says {sound}")
     
     def damage(self,dmg):
         self.hp -= dmg
-    
-bg1 = Enemy("guy", 150, 75, 15)
-bg2 = Enemy("bob", 15, 1, 1)
+        
+    def speak(self,sound="hello"):
+        return (f"{self.name} says {sound}")
 
-bg1.speak("why?")
+class DEA(Enemy):
+    def speak(self,sound="WHO DO YOU WORK FOR!"):
+        return (f"{self.name} says {sound}")
+   
+bg1 = Enemy("tuco", 150, 75, 15)
+bg2 = Enemy("saul", 15, 1, 1)
+
+bg1.speak("what did you do!")
+
+bg3 = DEA("DEA",100,10,1)
