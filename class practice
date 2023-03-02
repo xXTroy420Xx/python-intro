@@ -17,5 +17,7 @@ class Enemy:
     def damage(self,dmg):
         self.hp -= dmg
     
-Bg1 = Enemy("guy", 150, 75, 15)
-Bg2 = Enemy("bob", 15, 1, 1)
+bg1 = Enemy("guy", 150, 75, 15)
+bg2 = Enemy("bob", 15, 1, 1)
+
+bg1.speak("why?")
