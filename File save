@@ -2,7 +2,15 @@ import easygui
 import os
 
 saved_settings = 'saved_settings.txt'
-game_settings = {'resolution':'1980x1080','volume':50}
+game_settings = {'resolution':'1980x1080','volume':50, 'fps':60}
+
+def update_settings():
+    fields = ['Resolution', 'Volume', 'FPS']
+    values = [game_settings['resolution'],game_settings['volume'],game_settings['fps']]
+    new_settings = easygui.multenterbox('Update Game Settings',fields = fields, values = values)
+    game_settings['resolution'] = new_settings[0]
+    game_settings['volume'] = new_settings[1]
+    game_settings['fps'] = new_settings[2]
 
 def save_settings():
     with open(saved_settings, 'w') as f:
@@ -10,16 +18,20 @@ def save_settings():
 
 def load_settings():
     with open(saved_settings, 'r') as f:
-        content = f.read()
+        contents = f.read()
     game_settings.update(eval(contents))
 
 if os.path.isfile(saved_settings):
     load_settings()
 
 while True:
-    msg = 'Game Settings\n\nResolution: {}\n\nVolume {}'.format(game_settings['resolution'],game_settings['volume'])
+    msg = 'Game Settings\n\nResolution: {}\n\nVolume {}\n\nFPS {}'.format(game_settings['resolution'],game_settings['volume'],game_settings['fps'])
     choices = ['Update','Save','Exit']
     response = easygui.buttonbox(msg=msg, title='Game Settings', choices=choices)
 
-    if response == choices[1]:
+    if response == choices[0]:
+        update_settings()
+    elif response == choices[1]:
         save_settings()
+    elif response == choices[2]:
+        break;
