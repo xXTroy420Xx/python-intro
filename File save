@@ -2,15 +2,16 @@ import easygui
 import os
 
 saved_settings = 'saved_settings.txt'
-game_settings = {'resolution':'1980x1080','volume':50, 'fps':60}
+game_settings = {'resolution':'1980x1080','volume':50, 'fps':60, 'refresh rate':60}
 
 def update_settings():
-    fields = ['Resolution', 'Volume', 'FPS']
-    values = [game_settings['resolution'],game_settings['volume'],game_settings['fps']]
+    fields = ['Resolution', 'Volume', 'FPS', 'Refresh Rate']
+    values = [game_settings['resolution'],game_settings['volume'],game_settings['fps'],game_settings['refresh rate']]
     new_settings = easygui.multenterbox('Update Game Settings',fields = fields, values = values)
     game_settings['resolution'] = new_settings[0]
     game_settings['volume'] = new_settings[1]
     game_settings['fps'] = new_settings[2]
+    game_settings['refresh rate'] = new_settings[3]
 
 def save_settings():
     with open(saved_settings, 'w') as f:
@@ -25,7 +26,7 @@ if os.path.isfile(saved_settings):
     load_settings()
 
 while True:
-    msg = 'Game Settings\n\nResolution: {}\n\nVolume {}\n\nFPS {}'.format(game_settings['resolution'],game_settings['volume'],game_settings['fps'])
+    msg = 'Game Settings\n\nResolution: {}\n\nVolume: {}\n\nFPS: {}\n\nRefresh Rate: {}'.format(game_settings['resolution'],game_settings['volume'],game_settings['fps'],game_settings['refresh rate'])
     choices = ['Update','Save','Exit']
     response = easygui.buttonbox(msg=msg, title='Game Settings', choices=choices)
 
